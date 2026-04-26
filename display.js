@@ -3,17 +3,17 @@ import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasej
 
 // ==========================================
 // 1. นำ URL Web App ของ Google Apps Script อันใหม่มาใส่ที่นี่ (ในเครื่องหมายคำพูด)
-const GOOGLE_DRIVE_API_URL = "https://script.google.com/macros/s/AKfycbyLStJBYIUXldXaakNxgWrXtcCsukvmpycdHFhvOjqBFXescjaHsQUTOYPoHBJqEjY/exec";
+const GOOGLE_DRIVE_API_URL = "https://script.google.com/macros/s/AKfycbzbQ5VTjor6S0teOCJgJBjj77-mZ7QwdW9nJrQohjmzmDqtAHjkkgbuc6DBQq_dfgAK/exec";
 // ==========================================
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDMMwciq6QoLSaWK6xfdr0U3ynyahtoaSk",
-  authDomain: "studio-a33fe.firebaseapp.com",
-  databaseURL: "https://studio-a33fe-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "studio-a33fe",
-  messagingSenderId: "753539109404",
-  appId: "1:753539109404:web:0d5b9f468294dacce645d9",
-  measurementId: "G-WSYVYGNGCZ"
+ apiKey: "AIzaSyDMMwciq6QoLSaWK6xfdr0U3ynyahtoaSk",
+    authDomain: "studio-a33fe.firebaseapp.com",
+    databaseURL: "https://studio-a33fe-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "studio-a33fe",
+    messagingSenderId: "753539109404",
+    appId: "1:753539109404:web:d38b9974e8307152e645d9",
+    measurementId: "G-CLC8KLV29E"
 };
 
 const app = initializeApp(firebaseConfig);
