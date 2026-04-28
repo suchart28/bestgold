@@ -7,7 +7,7 @@
 body {
     font-family: 'Kanit', sans-serif;
     background-color: #fff; 
-    overflow: hidden; /* ป้องกันไม่ให้หน้าจอมีแถบเลื่อน */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -16,7 +16,7 @@ body {
 .layout-wrapper {
     display: flex;
     flex-direction: row;
-    height: 90vh; /* ความสูงส่วนบน */
+    height: 90vh; 
     width: 100%;
 }
 
@@ -34,67 +34,102 @@ body {
     z-index: 10;
 }
 
-/* โลโก้ */
 .logo-container {
     text-align: center;
-    margin-bottom: 1vh; /* ลดช่องว่างใต้โลโก้ลงอีก */
+    margin-bottom: 2vh;
     display: flex;
     justify-content: center; 
     align-items: center;    
 }
 
 .main-logo {
-    max-width: 45%; /* ย่อขนาดโลโก้ลงเหลือ 45% (จากเดิม 60%) */
+    max-width: 45%; 
     height: auto;    
     display: block;  
 }
 
-/* หัวข้อราคาทอง */
-.gold-title {
-    font-size: 2.5vw;
-    font-weight: 600;
-    color: #fce4ad; 
-    margin-bottom: 0.5vh;
-    text-align: left;
-    padding-left: 0.5vw;
+/* ==================================
+   ระบบ 2 หน้าจอ (แอนิเมชัน)
+   ================================== */
+.price-page {
+    animation: fadeIn 1s ease-in-out;
+    flex-grow: 1; /* ดันเนื้อหาให้เต็มพื้นที่ */
 }
 
-/* กล่องราคา ขยายความสูงเพิ่มขึ้นอีก */
-.price-row {
-    display: flex;
-    width: 100%;
-    height: 16vh; /* ขยายสูงขึ้นเป็น 16vh (พื้นที่จากโลโก้ที่เล็กลง) */
-    margin-bottom: 1.2vh; /* ลดช่องว่างระหว่างกล่องนิดหน่อยให้พอดีจอ */
-    border-radius: 30px; /* เพิ่มความโค้งมนให้รับกับกล่องที่สูงมาก */
-    overflow: hidden; 
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.price-label {
-    width: 35%; 
-    background: linear-gradient(to bottom, #fef1cc, #dfb974); 
-    color: #000;
-    display: flex;
-    align-items: center;
-    padding-left: 2vw;
-    font-size: 2.0vw; 
+/* ป้ายชื่อรายการ (สีแดงขอบทองแบบในภาพ) */
+.gold-title-pill {
+    background: linear-gradient(to right, #9e1b1d, #b52025);
+    color: white;
+    font-size: 2vw;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 50px;
+    padding: 1vh 2vw;
+    margin-bottom: 1.5vh;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border: 2px solid #e0c88b; 
+}
+
+.gold-title-pill .highlight {
+    color: #e0c88b;
     font-weight: 700;
 }
 
-.price-value {
-    width: 65%; 
-    background-color: #ffffff;
+/* กล่องราคา */
+.price-row-new {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, #f2f2f2, #d9d9d9);
+    border-radius: 15px;
+    padding: 1.5vh 1.5vw;
+    margin-bottom: 2vh;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    height: 12vh;
+}
+
+/* แคปซูล "รับซื้อ บาทละ" */
+.label-capsule {
+    background: linear-gradient(to bottom, #a11c1e, #c02a2c);
+    color: white;
+    padding: 1.5vh 2vw;
+    border-radius: 50px;
+    font-size: 1.8vw;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 35%;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ลูกศรสีเขียว */
+.green-arrow {
+    width: 0;
+    height: 0;
+    border-top: 1.5vw solid transparent;
+    border-bottom: 1.5vw solid transparent;
+    border-left: 2vw solid #1b9e24; 
+    margin: 0 1vw;
+}
+
+/* ตัวเลขราคา */
+.price-value-text {
+    font-size: 3.5vw;
+    font-weight: 700;
     color: #000;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 2vw;
-    font-size: 5.0vw; /* ขยายตัวเลขให้ใหญ่ขึ้นอีกนิด รับกับกรอบที่สูงขึ้น */
-    font-weight: 700;
-    letter-spacing: 1px;
+    width: 50%;
 }
 
-/* กล่องแสดงเวลาอัพเดท */
 .update-time {
     margin-top: auto; 
     font-size: 1.0vw; 
@@ -102,6 +137,7 @@ body {
     font-weight: 300;
     text-align: center;
     opacity: 0.9;
+    padding-bottom: 1vh;
 }
 
 /* ==================================
