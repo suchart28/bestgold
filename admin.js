@@ -35,7 +35,6 @@ window.saveSettings = async function() {
     saveBtn.disabled = true;
 
     try {
-        // บันทึกเฉพาะข้อมูล Manual (เพราะทองคำแท่งใช้ Auto)
         const dataToSave = {
             marquee: marqueeText,
             mediaUrl: mediaInput,
@@ -67,20 +66,15 @@ window.loadCurrentSettings = async function() {
         document.getElementById('marquee-input').value = data.marquee || "";
         document.getElementById('media-input').value = data.mediaUrl || "";
         
-        // โหลดข้อมูล Manual
-        if(document.getElementById('gold-extract-input')) {
-            document.getElementById('gold-extract-input').value = data.goldExtractBuy || "";
-        }
-        if(document.getElementById('silver-extract-input')) {
-            document.getElementById('silver-extract-input').value = data.silverExtractBuy || "";
-        }
-        if(document.getElementById('ornament-buy-input')) {
-            document.getElementById('ornament-buy-input').value = data.ornamentBuy || "";
-        }
-        
+        document.getElementById('gold-extract-input').value = data.goldExtractBuy || "";
+        document.getElementById('silver-extract-input').value = data.silverExtractBuy || "";
+        document.getElementById('ornament-buy-input').value = data.ornamentBuy || "";
     } else {
         document.getElementById('marquee-input').value = "";
         document.getElementById('media-input').value = "";
+        document.getElementById('gold-extract-input').value = "";
+        document.getElementById('silver-extract-input').value = "";
+        document.getElementById('ornament-buy-input').value = "";
     }
 }
 
