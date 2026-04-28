@@ -1,14 +1,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+// อัปเดต Firebase Config ชุดใหม่
 const firebaseConfig = {
-    apiKey: "AIzaSyDMMwciq6QoLSaWK6xfdr0U3ynyahtoaSk",
-    authDomain: "studio-a33fe.firebaseapp.com",
-    databaseURL: "https://studio-a33fe-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "studio-a33fe",
-    messagingSenderId: "753539109404",
-    appId: "1:753539109404:web:d38b9974e8307152e645d9",
-    measurementId: "G-CLC8KLV29E"
+    apiKey: "AIzaSyD5o9aY3La7nK7gCHbjM2ToolmnoE0y-is",
+    authDomain: "post-it-kk-election.firebaseapp.com",
+    projectId: "post-it-kk-election",
+    storageBucket: "post-it-kk-election.firebasestorage.app",
+    messagingSenderId: "323275742590",
+    appId: "1:323275742590:web:93a6681fe99d8b1446672f"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -75,10 +75,10 @@ setInterval(() => {
     } catch (e) {
         console.error("Pagination Loop Error:", e);
     }
-}, 10000);
+}, 60000);
 
 // ---------------------------------------------------
-// 3. ระบบ Media Player (รองรับ URL จาก Firebase)
+// 3. ระบบ Media Player (รองรับ URL ตรง)
 // ---------------------------------------------------
 let currentPlaylist = [];
 let currentMediaIndex = 0;
@@ -95,7 +95,7 @@ function playNextMedia() {
     }
 
     if (currentMediaIndex >= currentPlaylist.length) {
-        currentMediaIndex = 0; // วนกลับไปไฟล์แรก
+        currentMediaIndex = 0; 
     }
 
     let fileUrl = currentPlaylist[currentMediaIndex];
@@ -123,7 +123,7 @@ function playNextMedia() {
             mediaTimer = setTimeout(() => {
                 currentMediaIndex++; 
                 playNextMedia();
-            }, 10000); // โชว์รูปละ 10 วินาที
+            }, 10000); 
         };
         imgEl.onerror = () => { currentMediaIndex++; playNextMedia(); };
         
