@@ -25,15 +25,8 @@ window.checkLogin = function() {
     }
 };
 
-window.toggleMode = function() {
-    const mode = document.getElementById('mode-select').value;
-    document.getElementById('manual-inputs').style.display = (mode === 'manual') ? 'block' : 'none';
-};
-
 window.saveSettings = async function() {
     const branchId = document.getElementById('branch-select').value;
-    const mode = document.getElementById('mode-select').value;
-    const isAutoMode = (mode === 'auto');
     const marqueeText = document.getElementById('marquee-input').value;
     const mediaInput = document.getElementById('media-input').value; 
     const saveBtn = document.getElementById('save-btn');
@@ -42,19 +35,15 @@ window.saveSettings = async function() {
     saveBtn.disabled = true;
 
     try {
+        // บันทึกเฉพาะข้อมูล Manual (เพราะทองคำแท่งใช้ Auto)
         const dataToSave = {
-            isAutoMode: isAutoMode,
             marquee: marqueeText,
             mediaUrl: mediaInput,
+            goldExtractBuy: document.getElementById('gold-extract-input').value,
+            silverExtractBuy: document.getElementById('silver-extract-input').value,
+            ornamentBuy: document.getElementById('ornament-buy-input').value,
             updatedAt: new Date()
         };
-
-        if (!isAutoMode) {
-            dataToSave.barBuy = document.getElementById('bar-buy-input').value;
-            dataToSave.barSell = document.getElementById('bar-sell-input').value;
-            dataToSave.ornamentBuy = document.getElementById('orn-buy-input').value;
-            dataToSave.ornamentSell = document.getElementById('orn-sell-input').value;
-        }
 
         await setDoc(doc(db, "branches", branchId), dataToSave, { merge: true });
         alert(`บันทึกข้อมูลสาขา ${branchId} เรียบร้อยแล้ว!`);
@@ -74,18 +63,21 @@ window.loadCurrentSettings = async function() {
 
     if (docSnap.exists()) {
         const data = docSnap.data();
-        document.getElementById('mode-select').value = data.isAutoMode ? "auto" : "manual";
-        window.toggleMode();
         
         document.getElementById('marquee-input').value = data.marquee || "";
         document.getElementById('media-input').value = data.mediaUrl || "";
         
-        if (!data.isAutoMode) {
-            document.getElementById('bar-buy-input').value = data.barBuy || "";
-            document.getElementById('bar-sell-input').value = data.barSell || "";
-            document.getElementById('orn-buy-input').value = data.ornamentBuy || "";
-            document.getElementById('orn-sell-input').value = data.ornamentSell || "";
+        // โหลดข้อมูล Manual
+        if(document.getElementById('gold-extract-input')) {
+            document.getElementById('gold-extract-input').value = data.goldExtractBuy || "";
         }
+        if(document.getElementById('silver-extract-input')) {
+            document.getElementById('silver-extract-input').value = data.silverExtractBuy || "";
+        }
+        if(document.getElementById('ornament-buy-input')) {
+            document.getElementById('ornament-buy-input').value = data.ornamentBuy || "";
+        }
+        
     } else {
         document.getElementById('marquee-input').value = "";
         document.getElementById('media-input').value = "";
