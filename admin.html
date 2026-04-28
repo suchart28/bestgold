@@ -17,7 +17,7 @@
         button:disabled { background-color: #ccc; cursor: not-allowed; }
         hr { border: 0; height: 1px; background: #eee; margin: 25px 0; }
         .manual-box { background-color: #fcfcfc; padding: 20px; border: 1px solid #ddd; border-radius: 8px; margin-top: 10px; }
-        .info-box { background-color: #eaf4ff; padding: 12px; border-radius: 5px; margin-top: 15px; border-left: 4px solid #0056b3; }
+        .info-box { background-color: #eaf4ff; padding: 12px; border-radius: 5px; margin-top: 15px; border-left: 4px solid #0056b3; font-size: 14px; color: #0056b3; }
     </style>
 </head>
 <body>
@@ -41,13 +41,6 @@
                     <option value="1">สาขาที่ 1</option>
                     <option value="2">สาขาที่ 2</option>
                     <option value="3">สาขาที่ 3</option>
-                    <option value="4">สาขาที่ 4</option>
-                    <option value="5">สาขาที่ 5</option>
-                    <option value="6">สาขาที่ 6</option>
-                    <option value="7">สาขาที่ 7</option>
-                    <option value="8">สาขาที่ 8</option>
-                    <option value="9">สาขาที่ 9</option>
-                    <option value="10">สาขาที่ 10</option>
                 </select>
             </div>
 
@@ -57,7 +50,7 @@
                 <h3 style="margin-top: 0; font-size: 20px;">กำหนดราคา (Manual)</h3>
                 
                 <div class="form-group" style="margin-top: 15px;">
-                    <label>1. ทองสกัด 99.99% +1000 (รับซื้อ บาทละ)</label>
+                    <label>1. ทองสกัด 99.99% +1000 (รับซื้อ กิโลละ)</label>
                     <input type="number" id="gold-extract-input" placeholder="เช่น 73050">
                 </div>
 
@@ -72,16 +65,16 @@
                 </div>
 
                 <div class="info-box">
-                    <span style="font-size: 14px; color: #0056b3;">ℹ️ <b>หมายเหตุ:</b> ราคาทองคำแท่ง จะถูกดึงข้อมูลอัตโนมัติจากสมาคมค้าทองคำ ไม่ต้องกำหนดในหน้านี้</span>
+                    ℹ️ <b>หมายเหตุ:</b> ราคาทองคำแท่ง จะถูกดึงข้อมูลอัตโนมัติจากสมาคมค้าทองคำ
                 </div>
             </div>
 
             <hr>
 
-            <div class="form-group" style="display: none;">
-                <label for="media-input">🎞️ ลำดับคิวไฟล์สื่อ (เล่นวนลูป)</label>
-                <span style="font-size: 13px; color: #d32f2f; font-weight: 500;">*ใส่ชื่อไฟล์หลายๆ ไฟล์ โดยใช้ลูกน้ำ ( , ) คั่น</span><br>
-                <input type="text" id="media-input" placeholder="พิมพ์ชื่อไฟล์ที่นี่..." style="margin-top: 8px;">
+            <div class="form-group">
+                <label for="media-input">🎞️ คิวไฟล์สื่อโฆษณา (รูป Drive / วิดีโอ GitHub)</label>
+                <span style="font-size: 13px; color: #d32f2f; font-weight: 500;">*นำลิงก์ตรงมาใส่ คั่นแต่ละไฟล์ด้วยลูกน้ำ ( , )</span><br>
+                <input type="text" id="media-input" placeholder="https://..., https://..." style="margin-top: 8px;">
             </div>
 
             <div class="form-group">
