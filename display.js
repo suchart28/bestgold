@@ -198,7 +198,7 @@ function playCurrentMedia() {
 }
 
 fetchMediaFromDrive();
-setInterval(fetchMediaFromDrive, 300000); 
+setInterval(fetchMediaFromDrive, 30000); 
 
 // ---------------------------------------------------
 // ระบบดึงข้อมูล Firebase (โหมดผสม: Manual + Auto)
