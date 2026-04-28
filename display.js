@@ -75,7 +75,7 @@ setInterval(() => {
     } catch (e) {
         console.error("Pagination Loop Error:", e);
     }
-}, 60000);
+}, 10000);
 
 // ---------------------------------------------------
 // 3. ระบบ Media Player (รองรับ URL จาก Firebase)
