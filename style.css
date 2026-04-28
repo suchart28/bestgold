@@ -53,7 +53,7 @@ body {
    ================================== */
 .price-page {
     animation: fadeIn 1s ease-in-out;
-    flex-grow: 1; /* ดันเนื้อหาให้เต็มพื้นที่ */
+    flex-grow: 1;
 }
 
 @keyframes fadeIn {
@@ -61,7 +61,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ป้ายชื่อรายการ (สีแดงขอบทองแบบในภาพ) */
+/* ป้ายชื่อรายการ */
 .gold-title-pill {
     background: linear-gradient(to right, #9e1b1d, #b52025);
     color: white;
@@ -93,7 +93,6 @@ body {
     height: 12vh;
 }
 
-/* แคปซูล "รับซื้อ บาทละ" */
 .label-capsule {
     background: linear-gradient(to bottom, #a11c1e, #c02a2c);
     color: white;
@@ -108,7 +107,6 @@ body {
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
-/* ลูกศรสีเขียว */
 .green-arrow {
     width: 0;
     height: 0;
@@ -118,7 +116,6 @@ body {
     margin: 0 1vw;
 }
 
-/* ตัวเลขราคา */
 .price-value-text {
     font-size: 3.5vw;
     font-weight: 700;
