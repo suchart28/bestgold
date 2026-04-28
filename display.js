@@ -79,7 +79,7 @@ setInterval(() => {
         document.getElementById('page-2').style.display = 'none';
         currentPage = 1;
     }
-}, 300000); 
+}, 3000); 
 
 // ---------------------------------------------------
 // ระบบเล่นสื่อ Drive
