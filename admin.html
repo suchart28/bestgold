@@ -12,12 +12,12 @@
         .form-group { margin-bottom: 20px; }
         label { display: block; font-weight: 500; margin-bottom: 8px; color: #555; }
         input[type="text"], input[type="password"], input[type="number"], select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Kanit', sans-serif; font-size: 16px; box-sizing: border-box; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         button { width: 100%; background-color: #6d1b22; color: white; padding: 12px; border: none; border-radius: 5px; font-size: 18px; font-family: 'Kanit', sans-serif; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
         button:hover { background-color: #a82a35; }
         button:disabled { background-color: #ccc; cursor: not-allowed; }
         hr { border: 0; height: 1px; background: #eee; margin: 25px 0; }
-        .manual-box { background-color: #fcfcfc; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-top: 10px; }
+        .manual-box { background-color: #fcfcfc; padding: 20px; border: 1px solid #ddd; border-radius: 8px; margin-top: 10px; }
+        .info-box { background-color: #eaf4ff; padding: 12px; border-radius: 5px; margin-top: 15px; border-left: 4px solid #0056b3; }
     </style>
 </head>
 <body>
@@ -39,30 +39,40 @@
                 <label for="branch-select">📌 เลือกสาขาที่ต้องการตั้งค่า</label>
                 <select id="branch-select">
                     <option value="1">สาขาที่ 1</option>
-                    
+                    <option value="2">สาขาที่ 2</option>
+                    <option value="3">สาขาที่ 3</option>
+                    <option value="4">สาขาที่ 4</option>
+                    <option value="5">สาขาที่ 5</option>
+                    <option value="6">สาขาที่ 6</option>
+                    <option value="7">สาขาที่ 7</option>
+                    <option value="8">สาขาที่ 8</option>
+                    <option value="9">สาขาที่ 9</option>
+                    <option value="10">สาขาที่ 10</option>
                 </select>
             </div>
 
             <hr>
 
-            <div class="form-group">
-                <label for="mode-select">⚙️ โหมดราคาทอง</label>
-                <select id="mode-select" onchange="toggleMode()">
-                    <option value="auto">ดึงราคาอัตโนมัติ (สมาคมค้าทองคำ)</option>
-                    <option value="manual">กำหนดราคาเอง (Manual)</option>
-                </select>
-            </div>
-
-            <div id="manual-inputs" class="manual-box" style="display: none;">
-                <h4 style="margin-top: 0; color: #6d1b22;">ราคาทองคำแท่ง 96.5%</h4>
-                <div class="grid-2">
-                    <div><label>รับซื้อ (บาท)</label><input type="number" id="bar-buy-input"></div>
-                    <div><label>ขายออก (บาท)</label><input type="number" id="bar-sell-input"></div>
+            <div class="manual-box">
+                <h3 style="margin-top: 0; font-size: 20px;">กำหนดราคา (Manual)</h3>
+                
+                <div class="form-group" style="margin-top: 15px;">
+                    <label>1. ทองสกัด 99.99% +1000 (รับซื้อ บาทละ)</label>
+                    <input type="number" id="gold-extract-input" placeholder="เช่น 73050">
                 </div>
-                <h4 style="color: #6d1b22; margin-top: 15px;">ราคาทองรูปพรรณ 96.5%</h4>
-                <div class="grid-2">
-                    <div><label>รับซื้อ (บาท)</label><input type="number" id="orn-buy-input"></div>
-                    <div><label>ขายออก (บาท)</label><input type="number" id="orn-sell-input"></div>
+
+                <div class="form-group">
+                    <label>2. เงินสกัด 99.99% (รับซื้อ กิโลละ)</label>
+                    <input type="number" id="silver-extract-input" placeholder="เช่น 65000">
+                </div>
+
+                <div class="form-group">
+                    <label>3. ราคาทองรูปพรรณ (รับซื้อ บาทละ)</label>
+                    <input type="number" id="ornament-buy-input" placeholder="เช่น 69528">
+                </div>
+
+                <div class="info-box">
+                    <span style="font-size: 14px; color: #0056b3;">ℹ️ <b>หมายเหตุ:</b> ราคาทองคำแท่ง จะถูกดึงข้อมูลอัตโนมัติจากสมาคมค้าทองคำ ไม่ต้องกำหนดในหน้านี้</span>
                 </div>
             </div>
 
@@ -71,7 +81,6 @@
             <div class="form-group" style="display: none;">
                 <label for="media-input">🎞️ ลำดับคิวไฟล์สื่อ (เล่นวนลูป)</label>
                 <span style="font-size: 13px; color: #d32f2f; font-weight: 500;">*ใส่ชื่อไฟล์หลายๆ ไฟล์ โดยใช้ลูกน้ำ ( , ) คั่น</span><br>
-                <span style="font-size: 12px; color: #888;">เช่น: banner1.jpg, video.mp4, promo2.jpg</span>
                 <input type="text" id="media-input" placeholder="พิมพ์ชื่อไฟล์ที่นี่..." style="margin-top: 8px;">
             </div>
 
