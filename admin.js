@@ -1,20 +1,20 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+// อัปเดต Firebase Config ชุดใหม่
 const firebaseConfig = {
-    apiKey: "AIzaSyDMMwciq6QoLSaWK6xfdr0U3ynyahtoaSk",
-    authDomain: "studio-a33fe.firebaseapp.com",
-    databaseURL: "https://studio-a33fe-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "studio-a33fe",
-    messagingSenderId: "753539109404",
-    appId: "1:753539109404:web:d38b9974e8307152e645d9",
-    measurementId: "G-CLC8KLV29E"
+    apiKey: "AIzaSyD5o9aY3La7nK7gCHbjM2ToolmnoE0y-is",
+    authDomain: "post-it-kk-election.firebaseapp.com",
+    projectId: "post-it-kk-election",
+    storageBucket: "post-it-kk-election.firebasestorage.app",
+    messagingSenderId: "323275742590",
+    appId: "1:323275742590:web:93a6681fe99d8b1446672f"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// 1. ผูกปุ่มเข้าสู่ระบบ (แทนการใช้ onclick ใน HTML)
+// 1. ผูกปุ่มเข้าสู่ระบบ (รหัสผ่าน 987654321)
 document.getElementById('login-btn').addEventListener('click', function() {
     const pass = document.getElementById('password').value;
     if (pass === "987654321") {
@@ -69,7 +69,6 @@ async function loadCurrentSettings() {
         document.getElementById('silver-extract-input').value = data.silverExtractBuy || "";
         document.getElementById('ornament-buy-input').value = data.ornamentBuy || "";
     } else {
-        // ถ้าไม่มีข้อมูล ให้ล้างค่าในช่องว่าง
         document.getElementById('marquee-input').value = "";
         document.getElementById('media-input').value = "";
         document.getElementById('gold-extract-input').value = "";
