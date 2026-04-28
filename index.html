@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Gold - Digital Signage</title>
+    <title>BKK Diamond - Digital Signage</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,27 +17,39 @@
                 <img src="logo.png" alt="BKK DIAMOND Logo" class="main-logo" onerror="this.style.display='none'">
             </div>
 
-            <div class="gold-title">ราคาทองคำแท่ง 96.5%</div>
-            <div class="price-row">
-                <div class="price-label">รับซื้อ</div>
-                <div class="price-value" id="bar-buy">-</div>
-            </div>
-            <div class="price-row">
-                <div class="price-label">ขายออก</div>
-                <div class="price-value" id="bar-sell">-</div>
+            <div id="page-1" class="price-page" style="display: block;">
+                <div class="gold-title-pill">ราคารับซื้อ ทองสกัด 99.99% <span class="highlight">+1000</span></div>
+                <div class="price-row-new">
+                    <div class="label-capsule">รับซื้อ บาทละ</div>
+                    <div class="green-arrow"></div>
+                    <div class="price-value-text"><span id="gold-extract-buy">-</span> ฿</div>
+                </div>
+
+                <div class="gold-title-pill" style="margin-top: 3vh;">ราคารับซื้อ เงินสกัด 99.99%</div>
+                <div class="price-row-new">
+                    <div class="label-capsule">รับซื้อ กิโลละ</div>
+                    <div class="green-arrow"></div>
+                    <div class="price-value-text"><span id="silver-extract-buy">-</span> ฿</div>
+                </div>
             </div>
 
-            <div class="gold-title" style="margin-top: 3vh;">ราคาทองรูปพรรณ 96.5%</div>
-            <div class="price-row">
-                <div class="price-label">รับซื้อ</div>
-                <div class="price-value" id="ornament-buy">-</div>
-            </div>
-            <div class="price-row">
-                <div class="price-label">ขายออก</div>
-                <div class="price-value" id="ornament-sell">-</div>
+            <div id="page-2" class="price-page" style="display: none;">
+                <div class="gold-title-pill">ราคาทองคำแท่ง</div>
+                <div class="price-row-new">
+                    <div class="label-capsule">รับซื้อ บาทละ</div>
+                    <div class="green-arrow"></div>
+                    <div class="price-value-text"><span id="bar-buy">-</span> ฿</div>
+                </div>
+
+                <div class="gold-title-pill" style="margin-top: 3vh;">ราคาทองรูปพรรณ</div>
+                <div class="price-row-new">
+                    <div class="label-capsule">รับซื้อ บาทละ</div>
+                    <div class="green-arrow"></div>
+                    <div class="price-value-text"><span id="ornament-buy">-</span> ฿</div>
+                </div>
             </div>
 
-            <div class="update-time" id="update-time">อัพเดทราคาล่าสุด: -</div>
+            <div class="update-time" id="update-time">อัพเดทราคาล่าสุด: กำลังโหลด...</div>
 
         </div>
 
