@@ -25,27 +25,50 @@ function formatToIntegerPrice(priceStr) {
 }
 
 // ---------------------------------------------------
-// 1. ระบบดึงราคาทองคำแท่งอัตโนมัติจาก API
+// 1. ระบบดึงราคาทองคำแท่งอัตโนมัติจาก API ฮั่วเซ่งเฮง (XML)
 // ---------------------------------------------------
 async function fetchGoldTradersPrice() {
     try {
-        const response = await fetch('https://api.chnwt.dev/thai-gold-api/latest');
-        const data = await response.json();
-        if (data.status !== "success") throw new Error("API Error");
+        // เรียก API ของฮั่วเซ่งเฮง
+        const response = await fetch('https://apicheckpricev3.huasengheng.com/api/Values/GetPrice');
+        const xmlText = await response.text(); // รับข้อมูลมาเป็น Text เพื่อนำไป Parse XML
+        
+        // ใช้ DOMParser แปลงข้อความให้เป็น XML Document เพื่อให้ค้นหา Tag ได้ง่ายขึ้น
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+        
+        // ดึงรายการ <GoldPriceStruct> ทั้งหมดมาวนลูปตรวจสอบ
+        const structures = xmlDoc.getElementsByTagName("GoldPriceStruct");
+        
+        let barBuy = "-";
+        let updateTimeStr = "";
 
-        const prices = data.response.price;
-        let updateDate = data.response.date;
-        if (!updateDate || updateDate === "undefined") {
-            updateDate = new Date().toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' });
-        } else {
-            const d = new Date(updateDate);
-            if (!isNaN(d)) updateDate = d.toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' });
+        for (let i = 0; i < structures.length; i++) {
+            const goldTypeEl = structures[i].getElementsByTagName("GoldType")[0];
+            
+            // ตรวจหาตัวที่มี <GoldType>REF</GoldType>
+            if (goldTypeEl && goldTypeEl.textContent.trim() === "REF") {
+                const buyEl = structures[i].getElementsByTagName("Buy")[0]; // ดึงราคารับซื้อ
+                const timeEl = structures[i].getElementsByTagName("StrTimeUpdate")[0] || structures[i].getElementsByTagName("PresentDate")[0];
+
+                if (buyEl) {
+                    barBuy = formatToIntegerPrice(buyEl.textContent);
+                }
+                if (timeEl) {
+                    updateTimeStr = timeEl.textContent;
+                }
+                break; // เจอข้อมูลประเภท REF แล้ว สามารถหยุดลูปได้เลย
+            }
         }
-        const updateTime = data.response.update_time || new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
+
+        // หากใน XML ไม่มีเวลาอัปเดตส่งมา ให้ใช้เวลาของระบบปัจจุบันแทน
+        if (!updateTimeStr) {
+            updateTimeStr = new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }) + " น.";
+        }
 
         return {
-            barBuy: formatToIntegerPrice(prices.gold_bar.buy),
-            updateTime: `อัพเดทราคาทองคำแท่ง: วันที่ ${updateDate} เวลา ${updateTime}`
+            barBuy: barBuy,
+            updateTime: `อัพเดทราคาทองคำแท่ง (HSH): ${updateTimeStr}`
         };
     } catch (error) {
         console.error("API Fetch Error:", error);
